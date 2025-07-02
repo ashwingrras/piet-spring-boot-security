@@ -23,7 +23,8 @@ public class SecurityConfiguration {
     public SecurityConfiguration(
         JwtAuthenticationFilter jwtAuthenticationFilter,
         AuthenticationProvider authenticationProvider
-    ) {
+    )
+    {
         this.authenticationProvider = authenticationProvider;
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
     }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RequestMapping("/users")
@@ -22,6 +23,7 @@ public class UserController {
 
     @GetMapping("/me")
     public ResponseEntity<User> authenticatedUser() {
+        System.out.println(" inside authenticatedUser ");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         User currentUser = (User) authentication.getPrincipal();
@@ -30,9 +32,19 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> allUsers() {
+    public ResponseEntity<List<User>> allUsers()
+    {
+        System.out.println(" inside get allUsers");
         List <User> users = userService.allUsers();
 
         return ResponseEntity.ok(users);
+    }
+
+    @GetMapping("/checkapi")
+    public String checkApi()
+    {
+        String message = "API is working fine";
+
+        return message;
     }
 }
